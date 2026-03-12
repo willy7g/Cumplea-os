@@ -20,7 +20,6 @@
     padding: 20px 10px;
   }
 
-  /* Floating polka dots background */
   .dots-bg {
     position: fixed;
     inset: 0;
@@ -30,7 +29,6 @@
   .dot {
     position: absolute;
     border-radius: 50%;
-    background: rgba(255,255,255,0.35);
     animation: floatDot 6s ease-in-out infinite;
   }
   @keyframes floatDot {
@@ -45,7 +43,7 @@
     max-width: 420px;
     background: #fff;
     border-radius: 40px;
-    padding: 0 0 28px 0;
+    padding: 0 0 26px 0;
     box-shadow: 0 20px 60px rgba(220,50,100,0.25), 0 4px 20px rgba(0,0,0,0.08);
     overflow: hidden;
     animation: popIn 0.7s cubic-bezier(.17,.67,.35,1.3) both;
@@ -55,15 +53,12 @@
     to   { transform: scale(1) translateY(0); opacity: 1; }
   }
 
-  /* Header pink area */
   .header {
     background: linear-gradient(160deg, #e8155a 0%, #f7508a 60%, #ff87b2 100%);
-    padding: 18px 20px 40px;
+    padding: 18px 20px 44px;
     position: relative;
     text-align: center;
   }
-
-  /* Polka dots on header */
   .header::before {
     content: '';
     position: absolute;
@@ -72,60 +67,110 @@
     background-size: 28px 28px;
   }
 
-  /* Minnie head SVG */
-  .minnie-head {
+  .header-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
     position: relative;
-    display: inline-block;
-    margin-bottom: 8px;
+    z-index: 1;
+    margin-bottom: 10px;
   }
 
   .minnie-svg {
-    width: 110px;
-    height: 105px;
-    drop-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    width: 100px;
+    height: 95px;
     animation: bounce 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
   }
   @keyframes bounce {
     0%,100% { transform: translateY(0); }
     50% { transform: translateY(-8px); }
   }
 
+  .photo-wrap {
+    position: relative;
+    width: 108px;
+    height: 108px;
+    flex-shrink: 0;
+    animation: bounce 2.5s ease-in-out infinite;
+    animation-delay: 0.4s;
+  }
+  .photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -7px;
+    border-radius: 50%;
+    border: 3px dashed rgba(255,255,255,0.7);
+    animation: spin 10s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .photo-circle {
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.35), 0 8px 24px rgba(0,0,0,0.2);
+    overflow: hidden;
+    background: #fff0f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .photo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #e8155a;
+    font-size: 0.58rem;
+    font-weight: 800;
+    text-align: center;
+    padding: 6px;
+    line-height: 1.4;
+  }
+  .photo-placeholder .cam { font-size: 1.8rem; margin-bottom: 2px; }
+
   .header h1 {
     font-family: 'Pacifico', cursive;
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-shadow: 2px 3px 0 rgba(180,0,60,0.3);
     position: relative;
     z-index: 1;
   }
   .header .subtitle {
-    font-family: 'Nunito', sans-serif;
     color: rgba(255,255,255,0.92);
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-top: 4px;
+    margin-top: 3px;
     position: relative;
     z-index: 1;
   }
 
-  /* Wave divider */
-  .wave {
-    display: block;
-    margin-top: -2px;
-  }
+  .wave { display: block; margin-top: -2px; }
 
-  /* Name badge */
   .name-badge {
-    margin: -28px auto 0;
+    margin: -26px auto 0;
     background: linear-gradient(135deg, #e8155a, #f7508a);
     color: #fff;
     display: inline-block;
-    padding: 10px 36px;
+    padding: 9px 34px;
     border-radius: 50px;
     font-family: 'Pacifico', cursive;
-    font-size: 1.9rem;
+    font-size: 1.8rem;
     box-shadow: 0 6px 20px rgba(220,50,100,0.4);
     position: relative;
     z-index: 2;
@@ -133,21 +178,18 @@
     letter-spacing: 1px;
   }
 
-  .body-content {
-    padding: 16px 28px 0;
-  }
+  .body-content { padding: 14px 26px 0; }
 
   .you-re-invited {
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 900;
     color: #e8155a;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-bottom: 12px;
+    margin-bottom: 11px;
   }
 
-  /* Info blocks */
   .info-block {
     display: flex;
     align-items: center;
@@ -160,58 +202,31 @@
     transition: transform 0.2s;
   }
   .info-block:hover { transform: scale(1.02); }
+  .info-icon { font-size: 1.6rem; min-width: 36px; text-align: center; }
+  .info-text { display: flex; flex-direction: column; }
+  .info-label { font-size: 0.68rem; font-weight: 900; color: #f7508a; text-transform: uppercase; letter-spacing: 1.5px; }
+  .info-value { font-size: 0.95rem; font-weight: 700; color: #333; line-height: 1.3; }
 
-  .info-icon {
-    font-size: 1.8rem;
-    min-width: 40px;
-    text-align: center;
-  }
-
-  .info-text {
-    display: flex;
-    flex-direction: column;
-  }
-  .info-label {
-    font-size: 0.7rem;
-    font-weight: 900;
-    color: #f7508a;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-  }
-  .info-value {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #333;
-    line-height: 1.3;
-  }
-
-  /* Stars row */
   .stars {
     text-align: center;
     font-size: 1.1rem;
-    margin: 10px 0 10px;
+    margin: 10px 0 9px;
     letter-spacing: 6px;
     animation: sparkle 2s ease-in-out infinite;
   }
-  @keyframes sparkle {
-    0%,100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
+  @keyframes sparkle { 0%,100% { opacity:1; } 50% { opacity:0.45; } }
 
-  /* Footer message */
   .footer-msg {
     text-align: center;
     background: linear-gradient(135deg, #e8155a, #f7508a);
     color: #fff;
-    border-radius: 20px;
-    padding: 14px 20px;
-    font-size: 0.95rem;
+    border-radius: 18px;
+    padding: 12px 18px;
+    font-size: 0.92rem;
     font-weight: 700;
     line-height: 1.5;
-    margin: 0 0 0;
   }
 
-  /* Ribbon bow decoration */
   .bow-row {
     text-align: center;
     margin: 8px 0 10px;
@@ -219,24 +234,23 @@
     letter-spacing: 8px;
   }
 
-  /* Confirm button */
   .confirm-btn {
     display: block;
     width: 100%;
-    padding: 16px 20px;
-    background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 100%);
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #1a1a1a, #3a3a3a);
     color: #fff;
     border: none;
-    border-radius: 20px;
+    border-radius: 18px;
     font-family: 'Nunito', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 900;
     letter-spacing: 1px;
     cursor: pointer;
     text-decoration: none;
     text-align: center;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-    transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.22);
+    transition: transform 0.15s, box-shadow 0.15s;
     position: relative;
     overflow: hidden;
   }
@@ -247,7 +261,6 @@
     background: linear-gradient(135deg, #e8155a, #f7508a);
     opacity: 0;
     transition: opacity 0.25s;
-    border-radius: 20px;
   }
   .confirm-btn:hover::before { opacity: 1; }
   .confirm-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(220,50,100,0.4); }
@@ -257,66 +270,39 @@
 </head>
 <body>
 
-<!-- Floating background dots -->
 <div class="dots-bg" id="dotsBg"></div>
 
 <div class="card">
-  <!-- Header -->
   <div class="header">
-    <!-- Minnie Mouse SVG -->
-    <div class="minnie-head">
-      <svg class="minnie-svg" viewBox="0 0 150 140" xmlns="http://www.w3.org/2000/svg">
-        <!-- Left ear -->
-        <circle cx="35" cy="42" r="28" fill="#1a1a1a"/>
-        <!-- Right ear -->
-        <circle cx="115" cy="42" r="28" fill="#1a1a1a"/>
-        <!-- Face -->
-        <ellipse cx="75" cy="88" rx="52" ry="48" fill="#f5cba7"/>
-        <!-- Face highlight -->
-        <ellipse cx="75" cy="82" rx="44" ry="38" fill="#f8d7b5"/>
-        <!-- Eye left -->
-        <ellipse cx="57" cy="80" rx="8" ry="9" fill="#1a1a1a"/>
-        <circle cx="60" cy="77" r="2.5" fill="white"/>
-        <!-- Eye right -->
-        <ellipse cx="93" cy="80" rx="8" ry="9" fill="#1a1a1a"/>
-        <circle cx="96" cy="77" r="2.5" fill="white"/>
-        <!-- Nose -->
-        <ellipse cx="75" cy="96" rx="6" ry="4" fill="#e8155a"/>
-        <!-- Smile -->
-        <path d="M62 104 Q75 116 88 104" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <!-- Cheeks -->
-        <ellipse cx="50" cy="100" rx="10" ry="6" fill="rgba(240,100,130,0.3)"/>
-        <ellipse cx="100" cy="100" rx="10" ry="6" fill="rgba(240,100,130,0.3)"/>
-        <!-- Big bow on top center -->
-        <!-- Left bow part -->
-        <ellipse cx="63" cy="20" rx="18" ry="12" fill="#e8155a" transform="rotate(-15,63,20)"/>
-        <ellipse cx="63" cy="20" rx="12" ry="8" fill="#c0103f" transform="rotate(-15,63,20)" opacity="0.5"/>
-        <!-- Bow polka dots left -->
-        <circle cx="57" cy="16" r="2.5" fill="white" opacity="0.7"/>
-        <circle cx="65" cy="22" r="2" fill="white" opacity="0.7"/>
-        <circle cx="70" cy="14" r="2" fill="white" opacity="0.7"/>
-        <!-- Right bow part -->
-        <ellipse cx="87" cy="20" rx="18" ry="12" fill="#e8155a" transform="rotate(15,87,20)"/>
-        <ellipse cx="87" cy="20" rx="12" ry="8" fill="#c0103f" transform="rotate(15,87,20)" opacity="0.5"/>
-        <!-- Bow polka dots right -->
-        <circle cx="93" cy="16" r="2.5" fill="white" opacity="0.7"/>
-        <circle cx="85" cy="22" r="2" fill="white" opacity="0.7"/>
-        <circle cx="80" cy="14" r="2" fill="white" opacity="0.7"/>
-        <!-- Bow knot center -->
-        <ellipse cx="75" cy="20" rx="7" ry="7" fill="#e8155a"/>
-        <ellipse cx="75" cy="20" rx="4" ry="4" fill="#c0103f"/>
-      </svg>
+
+    <div class="header-row">
+     
+
+      <!-- ✏️ FOTO DE MADELYN: reemplaza LINK_DE_TU_FOTO con tu enlace directo de imagen -->
+      <div class="photo-wrap">
+        <div class="photo-circle">
+          <img
+            id="fotoMadelyn"
+            src="ma.jpeg"
+            alt="Madelyn"
+            onerror="this.style.display='none'; document.getElementById('placeholder').style.display='flex';"
+          />
+          <div id="placeholder" class="photo-placeholder" style="display:none;">
+            <div class="cam">📷</div>
+            Foto de Madelyn aquí
+          </div>
+        </div>
+      </div>
     </div>
+
     <h1>¡Cumpleaños!</h1>
     <div class="subtitle">✨ Estás invitada/o ✨</div>
   </div>
 
-  <!-- Wave -->
   <svg class="wave" viewBox="0 0 420 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="420" height="40">
     <path d="M0,0 C60,35 120,5 180,20 C240,35 300,5 360,20 C390,27 410,18 420,15 L420,0 Z" fill="#f7508a"/>
   </svg>
 
-  <!-- Name Badge -->
   <div style="text-align:center;">
     <div class="name-badge">Madelyn</div>
   </div>
@@ -328,7 +314,7 @@
       <div class="info-icon">🎂</div>
       <div class="info-text">
         <span class="info-label">Fecha</span>
-        <span class="info-value">Domingo 22 de Marzo, 2026</span>
+        <span class="info-value">Sábado 22 de Marzo, 2025</span>
       </div>
     </div>
 
@@ -344,7 +330,7 @@
       <div class="info-icon">📍</div>
       <div class="info-text">
         <span class="info-label">Lugar</span>
-        <span class="info-value">McDonald's Montserrat<br><span style="font-size:0.85rem;color:#888;font-weight:600;">Calzada San Juan, el Tecolote</span></span>
+        <span class="info-value">McDonald's Montserrat<br><span style="font-size:0.82rem;color:#999;font-weight:600;">Calzada San Juan</span></span>
       </div>
     </div>
 
@@ -352,32 +338,42 @@
 
     <div class="footer-msg">
       🌸 ¡Ven a celebrar con Minnie y con Madelyn! 🌸<br>
-      <span style="font-size:0.85rem;opacity:0.9;">¡Te esperamos con mucho amor! 💕</span>
+      <span style="font-size:0.83rem;opacity:0.9;">¡Te esperamos con mucho amor! 💕</span>
     </div>
 
     <div class="bow-row">🎀 🖤 🎀</div>
 
-    <a href="https://forms.gle/EpneLdw88q9MCRpdA" class="confirm-btn" target="_blank">
+    <!-- ✏️ Reemplaza TU_LINK_AQUI con tu enlace de confirmación -->
+    <a href="TU_LINK_AQUI" class="confirm-btn" target="_blank">
       <span>✅ Confirmar Asistencia</span>
     </a>
-
   </div>
 </div>
 
 <script>
-  // Generate floating dots
+  // Mostrar placeholder si el src sigue siendo el default
+  window.addEventListener('load', () => {
+    const img = document.getElementById('fotoMadelyn');
+    const ph  = document.getElementById('placeholder');
+    if (!img.src || img.src.includes('LINK_DE_TU_FOTO') || !img.complete || img.naturalWidth === 0) {
+      img.style.display = 'none';
+      ph.style.display  = 'flex';
+    }
+  });
+
+  // Floating dots
   const bg = document.getElementById('dotsBg');
   const colors = ['#f7508a','#e8155a','#ff87b2','#fff','#ffd0e3'];
   for (let i = 0; i < 28; i++) {
     const d = document.createElement('div');
     d.className = 'dot';
-    const size = Math.random() * 22 + 8;
+    const size = Math.random() * 20 + 7;
     d.style.cssText = `
       width:${size}px; height:${size}px;
       left:${Math.random()*100}%;
       top:${Math.random()*100}%;
       background:${colors[Math.floor(Math.random()*colors.length)]};
-      opacity:${Math.random()*0.3+0.1};
+      opacity:${Math.random()*0.28+0.08};
       animation-delay:${Math.random()*5}s;
       animation-duration:${Math.random()*4+4}s;
     `;
